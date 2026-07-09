@@ -410,6 +410,39 @@
   .sc-note{display:block;font-size:12.5px;color:#8a6a1e;font-weight:700;margin-top:5px}
   .sched-foot{text-align:center;font-size:13.5px;color:var(--muted);margin-top:24px}
   @media (max-width:640px){.sched{grid-template-columns:1fr}}
+  /* ===== 시각 임팩트 업그레이드 v2 ===== */
+  /* 형광펜 마커 */
+  .mark{background:linear-gradient(180deg,transparent 54%,rgba(231,197,109,.55) 54%,rgba(231,197,109,.55) 93%,transparent 93%);padding:0 3px;font-weight:800;border-radius:1px}
+  .hero .mark,.navy-sec .mark,.statband .mark{background:linear-gradient(180deg,transparent 54%,rgba(231,197,109,.42) 54%,rgba(231,197,109,.42) 93%,transparent 93%);color:#fff}
+  /* 히어로 오라 + 사진 글로우 */
+  .hero::after{content:"";position:absolute;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(231,197,109,.16),transparent 66%);top:-130px;right:-70px;z-index:1;animation:floaty 9s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(22px)}}
+  .hero-frame::before{content:"";position:absolute;inset:-16px;border-radius:28px;background:radial-gradient(circle at 50% 35%,rgba(231,197,109,.5),transparent 68%);filter:blur(18px);z-index:-1;animation:floaty 9s ease-in-out infinite}
+  /* 플로팅 배지 */
+  .hero-badge{position:absolute;top:2px;left:-6px;z-index:6;background:linear-gradient(180deg,#fff,#f3ead4);color:var(--ink);font-weight:800;font-size:12.5px;padding:9px 14px;border-radius:13px;box-shadow:0 14px 28px -8px rgba(0,0,0,.55);transform:rotate(-7deg);animation:bob 3s ease-in-out infinite}
+  .hero-badge b{color:#b9791e}
+  @keyframes bob{0%,100%{transform:rotate(-7deg) translateY(0)}50%{transform:rotate(-7deg) translateY(-7px)}}
+  /* CTA 펄스 글로우 */
+  .cta-pulse{animation:ctaglow 2.6s ease-in-out infinite}
+  @keyframes ctaglow{0%,100%{box-shadow:0 14px 30px -12px rgba(231,197,109,.6)}50%{box-shadow:0 16px 44px -6px rgba(231,197,109,.95)}}
+  /* 3유형 초대형 넘버 */
+  .seg-top{position:relative;overflow:hidden}
+  .seg-num{position:absolute;right:20px;top:-22px;font-size:128px;font-weight:900;line-height:1;color:rgba(231,197,109,.2);z-index:0;letter-spacing:-.05em;font-style:italic;pointer-events:none}
+  .seg-tag,.seg-q{position:relative;z-index:1}
+  /* 숫자 인포그래픽 밴드 */
+  .statband{background:linear-gradient(160deg,#0c1a36,#15294f 60%,#1b3160);color:#fff;position:relative;overflow:hidden}
+  .statband::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(231,197,109,.13),transparent 65%);top:-160px;left:-90px}
+  .statband .lead{color:#c3cee2}
+  .statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:1;margin-top:14px}
+  .statc{text-align:center;padding:16px 8px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(231,197,109,.16)}
+  .statc .n{font-size:clamp(34px,5.6vw,54px);font-weight:900;line-height:1;background:linear-gradient(180deg,#f3d98a,#d3a648);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.02em}
+  .statc .n small{font-size:.44em;-webkit-text-fill-color:#e7c56d;font-weight:800;margin-left:2px}
+  .statc .l{font-size:13.5px;color:#c3cee2;margin-top:12px;font-weight:600;line-height:1.5}
+  @media(max-width:720px){.statgrid{grid-template-columns:repeat(2,1fr);gap:12px}}
+  /* 개념 곡선 그래프 */
+  .curvebox{margin-top:30px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px 20px 14px;box-shadow:var(--shadow-sm)}
+  .curvebox svg{width:100%;height:auto;display:block}
+  .curve-cap{font-size:12px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.6}
 </style>
 </head>
 <body>
@@ -427,14 +460,15 @@
           <span class="badge">중등 · 고등 수학</span>
         </div>
         <h1>학원은 다니는데,<br /><span class="q">수학이 왜 안 오를까요?</span></h1>
-        <p class="sub">문제집엔 <b>별표·세모 표시만 쌓이고</b> 진도는 계속 나갑니다. 하지만 표시만 남은 문제는 아직 '내 것'이 아닙니다. <b>세모 문제조차 스스로 설명하지 못하는데 선행만</b> 하면, 고등학교에서 점수가 무너지기 쉽습니다.</p>
+        <p class="sub">문제집엔 <b>별표·세모 표시만 쌓이고</b> 진도는 계속 나갑니다. 하지만 표시만 남은 문제는 아직 '내 것'이 아닙니다. <b class="mark">세모 문제조차 스스로 설명하지 못하는데 선행만</b> 하면, 고등학교에서 점수가 무너지기 쉽습니다.</p>
         <p class="micro">📐 수학은 선행 진도가 아니라, <span>앞 단원을 얼마나 정복했는가</span>로 갈립니다.</p>
         <div class="cta-row">
-          <a class="btn btn-gold" href="tel:031-699-8111">☎ 우리 아이 수학 진단 상담 (무료)</a>
+          <a class="btn btn-gold cta-pulse" href="tel:031-699-8111">☎ 우리 아이 수학 진단 상담 (무료)</a>
           <a class="btn btn-ghost" href="https://map.naver.com/p/entry/place/1962162458?placePath=%252Fhome%253Fentry%253Dplt&amp;searchType=place&amp;lng=127.1855549&amp;lat=37.5682984&amp;c=15.00,0,0,0,dh" target="_blank" rel="noopener">🗺 오시는 길</a>
         </div>
       </div>
       <div class="hero-pic">
+        <div class="hero-badge">📉 지금이 <b>정복 골든타임</b></div>
         <div class="hero-frame"><img src="img/유용권.jpg" alt="유용권 선생님" fetchpriority="high"></div>
         <div class="hero-cred"><b>유용권 선생님</b><span>다올105 수학 전임강사</span></div>
       </div>
@@ -450,6 +484,22 @@
       <div class="speccard"><div class="spec-ic">🧑‍🏫</div><div><div class="spec-k">강사</div><div class="spec-v">유용권</div><div class="spec-s">다올105 수학 전임강사</div></div></div>
       <div class="speccard"><div class="spec-ic">📚</div><div><div class="spec-k">방식</div><div class="spec-v">개념 정복 + 오답 재구성</div><div class="spec-s">스스로 설명·재출제·확인</div></div></div>
       <div class="speccard"><div class="spec-ic">🗂</div><div><div class="spec-k">운영</div><div class="spec-v">인원 제한 운영</div><div class="spec-s">상담 후 반 배정</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 숫자 인포그래픽 밴드 -->
+<section class="statband">
+  <div class="wrap reveal">
+    <div class="narrow" style="text-align:center">
+      <p class="eyebrow" style="justify-content:center;color:var(--gold-bright)">숫자로 보는 다올105 수학</p>
+      <h2 class="sec" style="color:#fff">진도가 아니라,<br /><span class="mark">'정복'</span>으로 설계된 수업</h2>
+    </div>
+    <div class="statgrid">
+      <div class="statc"><div class="n">3</div><div class="l">유형별 맞춤 진단<br />(중등저득점·고등대비·고등회복)</div></div>
+      <div class="statc"><div class="n">4<small>단계</small></div><div class="l">정복 학습 시스템<br />설명→힌트→재출제→심화</div></div>
+      <div class="statc"><div class="n">6<small>과정</small></div><div class="l">중1~고2 정규·선행<br />한 선생님이 이어서</div></div>
+      <div class="statc"><div class="n">1:1</div><div class="l">개별 오답 재구성<br />'내 것' 될 때까지</div></div>
     </div>
   </div>
 </section>
@@ -490,21 +540,21 @@
   </div>
   <div class="wrap narrow segs reveal">
     <div class="seg">
-      <div class="seg-top"><span class="seg-tag">유형 ①</span><div class="seg-q">중학교인데, 왜 고득점이 안 나올까요?</div></div>
+      <div class="seg-top"><span class="seg-num">01</span><span class="seg-tag">유형 ①</span><div class="seg-q">중학교인데, 왜 고득점이 안 나올까요?</div></div>
       <div class="seg-body">
         <div class="seg-why"><div class="seg-label">막히는 이유</div><p>도형의 특징을 <b>구분하지 못해</b>, 조금만 심화로 가면 '비슷한 모양·값으로 답을 유추'하는 풀이에 빠집니다. 틀린 문제엔 표시만 남고, 끝내 '내 것'이 되지 않습니다.</p></div>
         <div class="seg-fix"><div class="seg-label">다올105는</div><p>자주 쓰는 개념을 각인시키고 <b>근거 있는 풀이</b>로 도형을 훈련합니다. 틀린 문제는 숫자만 바꿔·유사·심화로 재출제해 <b>확실히 '내 것'</b>이 될 때까지 확인합니다.</p></div>
       </div>
     </div>
     <div class="seg">
-      <div class="seg-top"><span class="seg-tag">유형 ②</span><div class="seg-q">중학교 땐 잘하는데, 고등학교 가서도 잘할까요?</div></div>
+      <div class="seg-top"><span class="seg-num">02</span><span class="seg-tag">유형 ②</span><div class="seg-q">중학교 땐 잘하는데, 고등학교 가서도 잘할까요?</div></div>
       <div class="seg-body">
         <div class="seg-why"><div class="seg-label">숨은 위험</div><p>중학 수학은 범위가 적어 <b>구멍이 감춰집니다.</b> 비슷한 유형만 외워도 점수가 나오고, "고등 선행 중"이라는 말이 오히려 실제 실력의 구멍을 감추기 딱 좋습니다.</p></div>
         <div class="seg-fix"><div class="seg-label">다올105는</div><p>앞 단원을 <b>스스로 설명될 때까지</b> 정복시킨 뒤, 겉핥기가 아닌 <b>'진짜 선행'</b> — 고등 내신 킬러 문제까지 미리 경험하게 만듭니다.</p></div>
       </div>
     </div>
     <div class="seg">
-      <div class="seg-top"><span class="seg-tag">유형 ③</span><div class="seg-q">중학교 땐 괜찮았는데, 고등 와서 무너졌어요.</div></div>
+      <div class="seg-top"><span class="seg-num">03</span><span class="seg-tag">유형 ③</span><div class="seg-q">중학교 땐 괜찮았는데, 고등 와서 무너졌어요.</div></div>
       <div class="seg-body">
         <div class="seg-why"><div class="seg-label">터진 이유</div><p>중등에서 감춰졌던 구멍이 <b>한 번에 터집니다.</b> 개념을 막연히 받아들여 '틀릴 수 있는 정교한 개념 문제'에서 오답이 몰리고, 쉬운 중간에서 고득점 기회마저 놓칩니다.</p></div>
         <div class="seg-fix"><div class="seg-label">다올105는</div><p>대표 유형으로 큰 맥락을 잡고 <b>특이 케이스를 구분</b>해 개념을 정교화합니다. 쉬운 중간에서 <b>고득점을 먼저 확보</b>해 어려운 기말까지 흐름을 잇습니다.</p></div>
@@ -525,6 +575,26 @@
     <div class="analogy">
       <div class="card"><div class="emo">😮‍💨</div><h3>씹는 법 없이 삼키면</h3><p>씹는 법도 모르는데 음식을 그냥 삼키면(=암기·선행만), <b style="color:var(--ink)">뭐가 들어왔는지도 모르고 소화도 안 됩니다.</b> 중학교 땐 공부양·범위가 적어 탈이 안 나 보일 뿐입니다.</p></div>
       <div class="card"><div class="emo">📉</div><h3>고등학교에서 무너진다</h3><p>중학교 땐 비슷한 유형만 외워도 점수가 나오고, "고등 선행 중"이라는 말이 <b style="color:var(--ink)">실제 구멍을 감추기 딱 좋습니다.</b> 그러다 고등학교에 가면 수학 점수가 우르르 무너집니다.</p></div>
+    </div>
+    <div class="curvebox reveal">
+      <svg viewBox="0 0 720 360" role="img" aria-label="학습 방식에 따른 실력 추이 개념 그래프">
+        <line x1="70" y1="300" x2="694" y2="300" stroke="#ded7c6" stroke-width="1.5"/>
+        <line x1="70" y1="28" x2="70" y2="300" stroke="#ded7c6" stroke-width="1.5"/>
+        <text x="62" y="42" text-anchor="end" font-size="12" fill="#9aa1b2">실력</text>
+        <line x1="436" y1="42" x2="436" y2="300" stroke="#c9a24a" stroke-width="1.4" stroke-dasharray="5 5" opacity=".65"/>
+        <text x="436" y="24" text-anchor="middle" font-size="12.5" font-weight="800" fill="#b9791e">고등 진입</text>
+        <path d="M70,248 C160,222 250,180 314,170 C360,163 400,168 436,186 C500,214 560,258 680,292" fill="none" stroke="#d15b52" stroke-width="4" stroke-dasharray="9 7" stroke-linecap="round"/>
+        <path d="M70,250 C160,230 240,201 314,178 C400,150 470,120 558,92 C610,74 650,60 680,50" fill="none" stroke="#d3a648" stroke-width="5.5" stroke-linecap="round"/>
+        <circle cx="680" cy="50" r="6.5" fill="#d3a648"/>
+        <circle cx="680" cy="292" r="6.5" fill="#d15b52"/>
+        <g font-size="12.5" fill="#6b7284" text-anchor="middle" font-weight="700">
+          <text x="70" y="322">중1</text><text x="192" y="322">중2</text><text x="314" y="322">중3</text>
+          <text x="436" y="322">고1</text><text x="558" y="322">고2</text><text x="680" y="322">고3</text>
+        </g>
+        <text x="612" y="42" font-size="13.5" font-weight="800" fill="#b9791e" text-anchor="middle">정복하는 공부</text>
+        <text x="590" y="284" font-size="12.5" font-weight="800" fill="#c0483f" text-anchor="middle">표시만 남는 공부</text>
+      </svg>
+      <p class="curve-cap">※ 학습 방식에 따른 실력 추이 <b>개념 모델</b>입니다. (실제 측정 데이터가 아닌, 다올105 수학이 현장에서 반복적으로 보는 경향)</p>
     </div>
     <blockquote class="tip"><b>수학 공부는 선행 진도가 전부가 아닙니다.</b> 앞 단원을 <b>얼마나 정복하고 올라왔느냐</b>가 핵심입니다. 세모조차 설명 못 하는 상태에서 고등 선행만 하는 건, 솔직히 말해 도움이 되기 어렵습니다.</blockquote>
     <p class="pull">표시만 남은 공부는,<br /><span class="em">고등학교에서</span> 드러나기 쉽습니다.</p>
